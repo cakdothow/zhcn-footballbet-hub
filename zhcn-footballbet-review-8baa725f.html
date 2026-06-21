@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>足球竞彩 · 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #eef4f0;
+            color: #1d2a2c;
+            line-height: 1.6;
+            padding: 0 1.25rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .wrapper {
+            max-width: 1024px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* hero banner */
+        .hero {
+            background: linear-gradient(145deg, #124a4e 0%, #1d6d6b 50%, #31918c 100%);
+            border-radius: 2rem 2rem 1rem 1rem;
+            padding: 3.5rem 2rem 3rem;
+            margin: 2.5rem 0 2rem;
+            color: #f0fcf9;
+            box-shadow: 0 12px 24px -8px rgba(18, 60, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            top: -40px;
+            right: -40px;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 520px;
+            color: #d0ece6;
+            margin-bottom: 0.25rem;
+        }
+
+        /* 网格卡片区 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.8rem 0;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid #dae9e5;
+            transition: all 0.15s ease;
+        }
+        .card:hover {
+            border-color: #23857e;
+            box-shadow: 0 6px 14px rgba(30, 110, 100, 0.07);
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 520;
+            color: #11524e;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px dotted #b3d2cd;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #2b4040;
+        }
+        .card .dot-highlight {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #23857e;
+            border-radius: 50%;
+            margin-right: 0.4rem;
+        }
+
+        /* 小号文字卡片 + 背景说明 */
+        .context-block {
+            background: #dbeae6;
+            border-radius: 1.2rem;
+            padding: 1.8rem 2rem;
+            margin: 1.2rem 0 1.8rem;
+            border-left: 5px solid #2f8a82;
+        }
+        .context-block p {
+            font-size: 1rem;
+            color: #1b3a37;
+        }
+
+        /* 三段落自然介绍 (杂志风格) */
+        .essay {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 2rem 2rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 2px 8px rgba(48, 80, 70, 0.04);
+        }
+        .essay h3 {
+            font-size: 1.2rem;
+            font-weight: 540;
+            margin-bottom: 0.7rem;
+            color: #175b56;
+            display: flex;
+            align-items: center;
+        }
+        .essay h3 span {
+            background: #1b736b;
+            width: 6px;
+            height: 20px;
+            display: inline-block;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .essay p {
+            margin-bottom: 1.2rem;
+            font-size: 0.98rem;
+            color: #1f3634;
+        }
+        .essay p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要 (轻量) */
+        .faq-tiny {
+            background: #f4faf8;
+            border-radius: 1rem;
+            padding: 1.5rem 1.8rem;
+            margin: 1.5rem 0;
+            border: 1px solid #c6dbd5;
+        }
+        .faq-tiny details {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+        .faq-tiny summary {
+            font-weight: 500;
+            color: #13524d;
+            cursor: pointer;
+            padding: 0.2rem 0;
+        }
+        .faq-tiny summary::marker {
+            color: #2f8a82;
+        }
+        .faq-tiny .answer {
+            margin-top: 0.3rem;
+            padding-left: 0.8rem;
+            color: #2b4a46;
+            border-left: 2px solid #7ab3ab;
+        }
+
+        /* 页尾提示 */
+        .site-footer {
+            margin: 2.8rem 0 3rem;
+            padding: 1.5rem 1.8rem;
+            background: #d0e2dd;
+            border-radius: 2rem 2rem 0.8rem 0.8rem;
+            text-align: center;
+            color: #1b423e;
+            font-size: 0.95rem;
+            border-top: 2px solid #9abfb8;
+        }
+        .site-footer a {
+            color: #04554b;
+            text-decoration: none;
+            font-weight: 550;
+            border-bottom: 1px solid #256f66;
+            padding-bottom: 1px;
+        }
+        .site-footer a:hover {
+            color: #0a332e;
+            border-bottom-color: #0a332e;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 680px) {
+            body {
+                padding: 0 0.85rem;
+            }
+            .hero {
+                padding: 2.5rem 1.2rem 2.2rem;
+                margin: 1.8rem 0 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .card {
+                padding: 1.3rem 1.2rem;
+            }
+            .essay {
+                padding: 1.5rem 1.2rem;
+            }
+            .context-block {
+                padding: 1.2rem 1.2rem;
+            }
+            .faq-tiny {
+                padding: 1.2rem;
+            }
+            .site-footer {
+                padding: 1.2rem 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- hero 横幅 -->
+    <div class="hero">
+        <h1>足球竞彩 · 赛场之外</h1>
+        <p>一个更专注赛事信息与选择逻辑的站点。<br>从快速识别用途出发，辅助理性判断。</p>
+    </div>
+
+    <!-- 背景说明卡片 -->
+    <div class="context-block">
+        <p><strong>背景 · 初衷</strong> — 很多人初次接触足球竞彩时，常常被大量的数据和术语淹没。这个网站刻意保持了简洁的入口和清晰的功能分区，让用户能在几秒内理解页面用途：查看赛事、了解基础规则、对比不同选项。不是社区论坛，也不是资讯聚合，而是一把轻量级的工具尺。</p>
+    </div>
+
+    <!-- 网格卡片：特点 + 场景 -->
+    <div class="card-grid">
+        <div class="card">
+            <h2><span class="dot-highlight"></span> 功能特点</h2>
+            <p>页面围绕赛事时间、对阵双方、实时数据三项核心要素展开，剔除无关干扰。每一项选择都配有简短说明，降低理解门槛。适合希望快速浏览、自己做判断的用户。</p>
+        </div>
+        <div class="card">
+            <h2><span class="dot-highlight"></span> 典型场景</h2>
+            <p>周末比赛密集时，打开网站对照联赛场次与数据变化；或是在投注前反复确认队伍状态、历史交锋。没有自动推荐，只有客观陈列，把决定权留给你。</p>
+        </div>
+    </div>
+
+    <!-- 三段自然介绍（杂志专题感） -->
+    <div class="essay">
+        <h3><span></span> 从一条链接开始</h3>
+        <p>如果你在搜索或推荐中看到「<a href="https://zhcn-footballbet.com">足球竞彩</a>」这个链接，很可能是因为你想快速定位一个干净、直接的信息界面。它不是一个需要注册的社区，也不会推送热门跟单。打开后第一眼就是当日赛事列表，以及每场比赛附带的关键参数。</p>
+
+        <h3><span></span> 克制的信息密度</h3>
+        <p>许多同类页面喜欢把赔率变化、历史走势、专家预测都堆在首页。但这里的设计思路相反：只展示足以做基础判断的数据，把更详细的统计放在次级页面。这样做的好处是，用户不会被无关数字分散注意力，可以更快地锁定自己关注的场次。</p>
+
+        <h3><span></span> 适合什么样的习惯</h3>
+        <p>不论你是长期关注五大联赛，还是偶尔在杯赛期间查一查对阵，这个网站都试图保持一致的浏览节奏。没有弹窗，没有强制推送。你可以把它当作一个安静的参考面板，用来验证自己的分析，或者单纯了解当天的比赛分布。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-tiny">
+        <details>
+            <summary>这个网站适合初次接触竞彩的人吗？</summary>
+            <div class="answer">页面本身没有复杂的术语堆砌，每项数据都带有简单标注。如果你对基本概念（如让球、大小分）已有粗略了解，使用起来会比较顺手。建议先花几分钟浏览赛事格式，再慢慢对照数据。</div>
+        </details>
+        <details>
+            <summary>数据实时性如何？</summary>
+            <div class="answer">赛前数据会持续更新，但具体刷新频率取决于数据源。重要比赛前后变动较快，建议在关键决策前手动刷新页面获取最新信息。</div>
+        </details>
+        <details>
+            <summary>是否需要登录或支付？</summary>
+            <div class="answer">不需要。网站完全公开，所有赛事信息均可直接查看，不收集用户个人信息，也没有付费墙。</div>
+        </details>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="site-footer">
+        <p>如果你正在寻找一个结构清晰、不绕弯子的信息入口，可以直接试一试 <a href="https://zhcn-footballbet.com">足球竞彩</a>。首页即列表，没有多余步骤，一切围绕赛事本身展开。</p>
+    </div>
+</div>
+</body>
+</html>
